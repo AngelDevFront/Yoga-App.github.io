@@ -110,7 +110,7 @@ const utils = {
       });
     });
   },
-  //
+  // Permet a l'utilisateur de supprimer des exercices en cliquant sur les boutons de suppression associés. Lorsqu'un bouton de suppression est cliqué, l'exercice correspondant est supprimé de la liste des exercices, et la liste mise a jour est ensuite affichée à l'utilisateur
   deleteItem: function () {
     document.querySelectorAll(".deleteBtn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
@@ -126,7 +126,7 @@ const utils = {
       });
     });
   },
-  //
+  // La méthode reboot permet de réinitialiser les exercices à leur état initial puis actualise l'affichage et stocke les modifications dans le stockage local Utile pour permettre au utilisateur de revenir à une config par défaut des exercices
   reboot: function () {
     exerciceArray = basicArray;
     page.lobby();
@@ -137,7 +137,7 @@ const utils = {
     localStorage.exercices = JSON.stringify(exerciceArray);
   },
 };
-//
+//la méthode lobby génère dynamiquement une liste HTML des exercices actuels à partir des données contenues dans exercices array ce qui permet à l'utilisateur de voir et d'interagir avec les exercices dans l'interface utilisateur
 const page = {
   lobby: function () {
     let mapArray = exerciceArray
@@ -156,7 +156,7 @@ const page = {
           `
       )
       .join("");
-    //
+    // défini la procédure pour afficher la page de paramétrage des exercices dans l'interface utilisateur  i gère les événements associés a la modification des exercices a leur réorganisation et a leur suppression et fournit des fonctionnalités pour réinitialiser les exercices et démarrer une routine d'exercices
     utils.pageContent(
       "Paramétrage <i id='reboot' class='fas fa-undo'></i>",
       "<ul>" + mapArray + "</ul>",
@@ -168,13 +168,13 @@ const page = {
     reboot.addEventListener("click", () => utils.reboot());
     start.addEventListener("click", () => this.routine());
   },
-  //
+  //utilisé pour démarrer une routine d'exercice mes a jour l'interface utilisateur pour afficher la page routine d'exercice avec le titre routine et le compte a rebours de l'exercices en cours
   routine: function () {
     const exercice = new Exercice();
 
     utils.pageContent("Routine", exercice.updateCountdown(), null);
   },
-  //
+  // Affiche une page de fin de routine d'exercice avec des option pour recommencer la routine ou réinitialiser les exercices elle permet a l'utilisateur de gérer la fin de la routine d'exercices et de prendre des actions en conséquence
   finish: function () {
     utils.pageContent(
       "C'est terminé !",
@@ -185,5 +185,5 @@ const page = {
     reboot.addEventListener("click", () => utils.reboot());
   },
 };
-//
+//affiche la page de paramétrage dans l'innterface utilisateur lui permettant ainsi de modifier les paramètres des exercices avant de démarrer la routine.
 page.lobby();
