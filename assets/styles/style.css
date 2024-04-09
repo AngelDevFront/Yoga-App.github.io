@@ -21,7 +21,7 @@ button:hover {
   transform: translateX(4px);
 }
 body {
-  background: url(../../assets/img/Salar-de-Uyuni-Bolivia-Dry-salt-flats-Travelwithmk.com_.jpg)
+  background: url(./img/Salar-de-Uyuni-Bolivia-Dry-salt-flats-Travelwithmk.com_.jpg)
     fixed center/cover;
 }
 h1 {
